@@ -1,0 +1,11 @@
+Package: causalInference
+Type: Package
+Title: Functions to run the pc algorithm and two-step pc algorithm with aggregated or disaggregated data and different indpendence tests
+Version: 0.1.0
+Author: Rohan Arambepola
+Maintainer: Rohan Arambepola <rarambepola@gmail.com>
+Description: See https://arxiv.org/abs/2001.07745 for more details.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: RCITcpp, doParallel, foreach

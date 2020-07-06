@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "cor", "lm")
+importFrom("doParallel", "registerDoParallel")
+importFrom("parallel", "makeCluster", "stopCluster")
+importFrom("foreach", "foreach", "%do%", "%dopar%")
