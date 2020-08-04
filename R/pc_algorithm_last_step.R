@@ -280,6 +280,8 @@ pcskel_last <- function(G_0, obsDat, alpha, last.index,
     G_old <- G_new
     condSetSize <- condSetSize + 1
     edges <- getEdgesLast(G_old, last.index)
+    if(length(edges) == 0) return(list(G_old, S))
+
     if(!is.null(edges)){
       maxsize <- 0
       for(edge in edges){
