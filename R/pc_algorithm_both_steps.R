@@ -17,6 +17,7 @@ pcalg_both_steps <- function(obsDat,
                              subset_step_1=NULL,
                              subset_step_2=NULL,
                              run_parallel_step_2=NULL,
+                             pop_weighting=FALSE,
                              ...){
   if(is.null(alpha_step_2)) alpha_step_2 <- alpha
   nvar <- length(obsDat)
@@ -50,12 +51,14 @@ pcalg_both_steps <- function(obsDat,
     if(aggregated){
       #undo aggregation
       obsDat[-last.index] <- reaggregate(obsDat[-last.index], polygon_start_index + 1, polygon_end_index + 1)
+      if(pop_weighting) population <- reaggregate(population, polygon_start_index + 1, polygon_end_index + 1)
       obsDat <- lapply(obsDat, function(l) l[sample_use])
       polygon_sizes <- cumsum(sapply((obsDat[-last.index])[[1]], length))
       polygon_start_index <- c(0, polygon_sizes)
       polygon_start_index <- polygon_start_index[-length(polygon_start_index)]
       polygon_end_index <- polygon_sizes - 1
       obsDat <- lapply(obsDat, unlist)
+      if(pop_weighting) population <- unlist(population)
     }else{
       obsDat <- lapply(obsDat, function(l) l[sample_use])
     }
